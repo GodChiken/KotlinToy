@@ -9,6 +9,7 @@ buildscript {
         classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.21")
     }
 }
+
 // https://plugins.gradle.org/ 위 사이트에서 플러그인 정보를 확인한다.
 plugins {
     id("org.springframework.boot") version "2.5.3" apply false
@@ -17,6 +18,7 @@ plugins {
     kotlin("plugin.spring") version "1.5.21"
     kotlin("plugin.jpa") version "1.5.21"
 }
+
 // 전체 프로젝트에 적용할 내용? 인거같은데 확인이 필요
 // 기존 depth-1 에 존재하는 task가 옮겨졌다.
 allprojects {
@@ -40,6 +42,7 @@ allprojects {
         useJUnitPlatform()
     }
 }
+ 
 // 각 서브 모듈에서? 의존성을 분리하기 위해 세팅하는듯 하다.
 subprojects {
     repositories {
