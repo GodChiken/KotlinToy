@@ -1,34 +1,39 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-plugins {
-    id("org.springframework.boot") version "2.5.3"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    kotlin("jvm") version "1.5.21"
-    kotlin("plugin.spring") version "1.5.21"
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    enabled = false
 }
 
-group = "com.masterkbh.kotlin"
-version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
-
-repositories {
-    mavenCentral()
+tasks.getByName<Jar>("jar") {
+    enabled = true
+    baseName = "common"
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-}
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
+    api(kotlin("reflect"))
+    api(kotlin("stdlib-jdk8"))
+    api("org.springframework.boot:spring-boot-starter")
+    api("org.springframework.boot:spring-boot-starter-data-jpa")
+    api("org.springframework.boot:spring-boot-starter-web")
+
+    api("org.springframework.boot:spring-boot-starter-websocket:2.3.4.RELEASE")
+
+    api("com.squareup.retrofit2:retrofit:2.6.0")
+    api("com.squareup.retrofit2:converter-gson:2.6.0")
+    api("com.squareup.retrofit2:converter-jackson:2.6.0")
+    api("io.reactivex.rxjava2:rxjava:2.2.19")
+    api("com.squareup.retrofit2:adapter-rxjava:2.8.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+    api("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    api("com.google.code.gson:gson:2.8.5")
+
+    api("org.apache.clerezza.ext:org.json.simple:0.4")
+
+    compileOnly("org.projectlombok:lombok")
+    runtimeOnly("mysql:mysql-connector-java")
+    annotationProcessor("org.projectlombok:lombok")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
-}
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+    implementation("org.mariadb.jdbc:mariadb-java-client:2.7.3")
 }
