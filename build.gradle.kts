@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath( "org.jetbrains.kotlin:kotlin-noarg")
+        classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.21")
     }
 }
 // https://plugins.gradle.org/ 위 사이트에서 플러그인 정보를 확인한다.
@@ -51,6 +51,7 @@ subprojects {
         plugin("kotlin-spring")
         plugin("kotlin-jpa")
         plugin("idea")
+        plugin("eclipse")
         plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
         plugin( "kotlin-allopen")
