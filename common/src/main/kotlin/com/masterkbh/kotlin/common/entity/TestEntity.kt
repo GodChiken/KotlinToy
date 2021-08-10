@@ -8,14 +8,15 @@ import javax.persistence.*
 @Table(name = "test_entity")
 class TestEntity (
 
-    @Id // 3
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null,
 
     @Column(name = "secret")
     var secret: String? = null,
 
-        @Column(name = "inserted_at")
+    //https://yangbox.tistory.com/24
+    @Column(name = "inserted_at")
     var insertedAt: ZonedDateTime? = ZonedDateTime.now(),
 
     @Column(name = "updated_at")
