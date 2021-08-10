@@ -8,6 +8,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 // 빌드 시 repository, depdency를 활용하여 참조하는 요소를 기술하는 곳, plugins{} 블럭에서 버전을 지정하면 그외의 곳에서 동일한 버전을 따라간다.
 // 버전을 설정해야 하는 유일한 장소는 플러그인의 클래스 경로를 정의할 때 뿐이므로 본인은 삭제했다.
 buildscript {
+    /*전역변수를 설정하는 곳
+    ext{
+
+    }*/
     repositories { mavenCentral() }
     dependencies { classpath( "org.jetbrains.kotlin:kotlin-noarg") }
 }
