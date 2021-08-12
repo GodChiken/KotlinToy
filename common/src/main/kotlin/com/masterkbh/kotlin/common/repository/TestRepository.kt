@@ -1,4 +1,4 @@
 package com.masterkbh.kotlin.common.repository
 
-class TestReporitory {
+class TestRepository {
 }
