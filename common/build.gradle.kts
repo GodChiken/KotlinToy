@@ -6,34 +6,29 @@ tasks.getByName<Jar>("jar") {
     enabled = true
     baseName = "common"
 }
-
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
+}
 dependencies {
-
+    //kotlin-reflect은 Kotlin 리플렉션 라이브러리입니다 (Spring Framework 5에서 필수).
     api(kotlin("reflect"))
+    //kotlin-stdlib-jdk8은 Kotlin 표준 라이브러리의 Java 8 변형입니다.
     api(kotlin("stdlib-jdk8"))
+    //spring boot dependency
     api("org.springframework.boot:spring-boot-starter")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     api("org.springframework.boot:spring-boot-starter-web")
-
-    api("org.springframework.boot:spring-boot-starter-websocket:2.3.4.RELEASE")
-
-    api("com.squareup.retrofit2:retrofit:2.6.0")
-    api("com.squareup.retrofit2:converter-gson:2.6.0")
-    api("com.squareup.retrofit2:converter-jackson:2.6.0")
-    api("io.reactivex.rxjava2:rxjava:2.2.19")
-    api("com.squareup.retrofit2:adapter-rxjava:2.8.1")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
+    //kotlin coroutine 사용시필수
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    //kolin reactive programming
     api("io.reactivex.rxjava2:rxkotlin:2.4.0")
+    //파일형식의 json 파싱
     api("com.google.code.gson:gson:2.8.5")
-
-    api("org.apache.clerezza.ext:org.json.simple:0.4")
-
-    compileOnly("org.projectlombok:lombok")
+    //mariaDB
+    implementation("org.mariadb.jdbc:mariadb-java-client:2.7.3")
     runtimeOnly("mysql:mysql-connector-java")
-    annotationProcessor("org.projectlombok:lombok")
+    //test
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
-
-    implementation("org.mariadb.jdbc:mariadb-java-client:2.7.3")
 }

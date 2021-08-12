@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class TestRestController {
 
-    @GetMapping("/")
-    fun index(): String ="Hello Index"
     @GetMapping("/test")
     fun test(): String = "asdf"
+
+    @GetMapping
+    fun cou(): String = "a"
 }
