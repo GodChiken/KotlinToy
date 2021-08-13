@@ -1,14 +1,15 @@
 package com.masterkbh.kotlin.common.presentation.controller.api
 
+import com.masterkbh.kotlin.common.service.TestService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class TestRestController {
+class TestRestController (
+    private val testService: TestService
+) {
 
     @GetMapping("/test")
-    fun test(): String = "asdf"
+    fun test(): String = testService.testMethod()
 
-    @GetMapping
-    fun cou(): String = "a"
 }
