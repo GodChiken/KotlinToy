@@ -1,3 +1,9 @@
+//https://jolly-sally.tistory.com/63
+
+plugins{
+    war
+}
+
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     enabled = false
 }

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service
 @Service
 class TestService {
     fun testMethod(): String {
-        return "test"
+        return "test5"
     }
 }

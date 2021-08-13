@@ -11,7 +11,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * 빌드시에는 필요한 모든 과정을 플러그인의 내부 task가 진행해 주게 됩니다.
  * */
 plugins {
-    war
     val kotlinVersion = "1.5.21"
     id("org.springframework.boot") version "2.5.3" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -24,12 +23,15 @@ plugins {
 // 빌드 시 repository, depdency를 활용하여 참조하는 요소를 기술하는 곳, plugins{} 블럭에서 버전을 지정하면 그외의 곳에서 동일한 버전을 따라간다.
 // 버전을 설정해야 하는 유일한 장소는 플러그인의 클래스 경로를 정의할 때 뿐이므로 본인은 삭제했다.
 // 의도치않게 변경될 경우를 방지하기위해 명시하는게 좋다고 하여 다시 버전을 추가해두었다.
+// jcenter() 는 서비스 종료인한 deprecated 되었으므로 사용하지 않는다.
 buildscript {
     /*
         전역변수를 설정하는 곳이나 쓰지말자
         ext{ }
     */
-    repositories { mavenCentral() }
+    repositories {
+        mavenCentral()
+    }
     dependencies { classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.2") }
 }
 
@@ -79,6 +81,14 @@ subprojects {
     }
 }
 
+/**
+ * Spring Boot 2 부터는 CGLIB Proxy 방식으로 Bean을 관리.
+ * CGLIB Proxy는 Target Class를 상속받아 생성하기 때문에 open으로
+ * 상속이 가능한 상태이어야 합니다. 그러기 때문에 all-open 플러그인이 필요합니다.
+ * https://cheese10yun.github.io/spring-kotlin/
+ * */
 allOpen {
     annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
