@@ -1,6 +1,6 @@
 spring:
-#  profiles:
-#    active: dev
+  profiles:
+    active: dev
   jpa:
     show_sql: true
     hibernate:
@@ -10,10 +10,6 @@ spring:
     open-in-view: false
   aop:
     proxy-target-class: true
-  mvc:
-    view:
-      prefix: /WEB-INF/jsp/
-      suffix: .jsp
   servlet:
     multipart:
       max-file-size: 10MB
@@ -44,9 +40,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-#  config:
-#    activate:
-#      on-profile: dev
+  config:
+    activate:
+      on-profile: dev
 logging:
   level:
     org:
