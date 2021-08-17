@@ -1,4 +1,7 @@
-//https://jolly-sally.tistory.com/63
+/*
+* https://jessyt.tistory.com/106
+* https://minkukjo.github.io/study/docs/spring/jpa/kotlin-jpa-guide/#querydsl
+* */
 
 plugins{
     war
@@ -15,6 +18,7 @@ tasks.getByName<Jar>("jar") {
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
 dependencies {
     //kotlin-reflect은 Kotlin 리플렉션 라이브러리입니다 (Spring Framework 5에서 필수).
     api(kotlin("reflect"))
