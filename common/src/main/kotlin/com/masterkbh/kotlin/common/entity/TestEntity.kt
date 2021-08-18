@@ -1,6 +1,6 @@
 package com.masterkbh.kotlin.common.entity
 
-import java.time.ZonedDateTime
+import java.time.LocalDate
 import javax.persistence.*
 
 /*JPA Entity의 패키지 추후, Nexus를 통한 분리 필요*/
@@ -17,8 +17,8 @@ class TestEntity (
 
     //https://yangbox.tistory.com/24
     @Column(name = "inserted_at")
-    var insertedAt: ZonedDateTime? = ZonedDateTime.now(),
+    var insertedAt: LocalDate? = LocalDate.now(),
 
     @Column(name = "updated_at")
-    var updatedAt: ZonedDateTime? = ZonedDateTime.now()
+    var updatedAt: LocalDate? = LocalDate.now()
 )

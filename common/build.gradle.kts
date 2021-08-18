@@ -37,4 +37,14 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    implementation("com.querydsl:querydsl-jpa")
+    kapt("com.querydsl:querydsl-apt:4.4.0:jpa")
+    kapt("org.springframework.boot:spring-boot-configuration-processor")
+    sourceSets{
+        main{
+            java {
+                srcDir("$buildDir/generated/source/kapt/main")
+            }
+        }
+    }
 }
