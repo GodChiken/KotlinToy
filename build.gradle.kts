@@ -12,6 +12,7 @@ plugins {
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     kotlin("plugin.jpa") version kotlinVersion
+    kotlin("kapt") version kotlinVersion
 }
 
 // https://notpeelbean.tistory.com/entry/gradle-buildscript-dependencies-%EC%99%80-dependencies-%EC%9D%98-%EC%B0%A8%EC%9D%B4
@@ -59,6 +60,7 @@ allprojects {
     tasks.withType<Test> {
         useJUnitPlatform()
     }
+
 }
 
 // 각 서브 모듈에서? 의존성을 분리하기 위해 세팅하는듯 하다.
@@ -89,4 +91,10 @@ allOpen {
     annotation("javax.persistence.Entity")
     annotation("javax.persistence.MappedSuperclass")
     annotation("javax.persistence.Embeddable")
+}
+/**
+ *  Entity 애노테이션이 붙은 코틀린 클래스의 NoArgument 생성자 자동 생성을 위한 설정
+ * */
+noArg {
+    annotation("javax.persistence.Entity")
 }
