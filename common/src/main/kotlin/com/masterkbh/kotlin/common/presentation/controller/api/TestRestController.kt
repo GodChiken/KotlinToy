@@ -18,6 +18,16 @@ class TestRestController (
         testService.addTestEntity()
     }
 
+    @GetMapping("/add/test/transaction")
+    fun transactionTest(){
+        testService.transactionTest()
+    }
+
+    @GetMapping("/add/test/transaction2")
+    fun transactionTest2(){
+        testService.transactionTest2()
+    }
+
     @GetMapping("/call/query_dsl")
     fun callQueryDSL(): String {
         val testEntityList : List<TestEntity> =  testService.callQueryDSL()

@@ -27,13 +27,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
-<<<<<<< Updated upstream
-    dependencies { classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.2") }
-=======
     dependencies {
         classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.0")
     }
->>>>>>> Stashed changes
 }
 
 // 전체 프로젝트에 적용할 내용? 인거같은데 확인이 필요
