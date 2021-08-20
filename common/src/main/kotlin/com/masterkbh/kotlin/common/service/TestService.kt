@@ -1,7 +1,9 @@
 package com.masterkbh.kotlin.common.service
 
+import com.masterkbh.kotlin.common.component.mapper.TestEntityMapper
 import com.masterkbh.kotlin.common.entity.TestEntity
 import com.masterkbh.kotlin.common.repository.TestRepository
+import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
@@ -40,5 +42,13 @@ class TestService (
 
     fun callQueryDSL(): List<TestEntity> {
         return testRepository.findByIdAndUpdateAt(1, LocalDate.now())
+    }
+
+    fun mappingTest(): Nothing? {
+        val testEntity = testRepository.findById(1)
+        val converter = Mappers.getMapper(TestEntityMapper::class.java)
+        val testEntityDTO = null
+        //val testEntityDTO = converter.toDTO(testEntity)
+        return testEntityDTO
     }
 }

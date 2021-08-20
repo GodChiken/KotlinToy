@@ -33,4 +33,8 @@ class TestRestController (
         val testEntityList : List<TestEntity> =  testService.callQueryDSL()
         return "1"
     }
+    @GetMapping("/mapping")
+    fun mappingTest(){
+        testService.mappingTest()
+    }
 }
