@@ -1,8 +1,3 @@
-/*
-* https://jessyt.tistory.com/106
-* https://minkukjo.github.io/study/docs/spring/jpa/kotlin-jpa-guide/#querydsl
-* */
-
 plugins{
     war
 }
@@ -13,12 +8,13 @@ tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar
 
 tasks.getByName<Jar>("jar") {
     enabled = true
-    baseName = "common"
 }
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
-
+tasks.test {
+    useJUnitPlatform()
+}
 dependencies {
     //kotlin-reflect은 Kotlin 리플렉션 라이브러리입니다 (Spring Framework 5에서 필수).
     api(kotlin("reflect"))
@@ -28,8 +24,9 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     api("org.springframework.boot:spring-boot-starter-web")
+    api("org.springframework.boot:spring-boot-starter-mustache")
     //kotlin coroutine 사용시필수
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core")
     //kolin reactive programming
     api("io.reactivex.rxjava2:rxkotlin:2.4.0")
     //파일형식의 json 파싱
@@ -41,7 +38,15 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
-    implementation("com.querydsl:querydsl-jpa")
+    //test
+    testImplementation(kotlin("test"))
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.0")
+
+    //Entity <-> DTO Mapper
+    implementation("org.mapstruct:mapstruct:1.4.2.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+
+    api("com.querydsl:querydsl-jpa")
     kapt("com.querydsl:querydsl-apt:4.4.0:jpa")
     kapt("org.springframework.boot:spring-boot-configuration-processor")
     sourceSets{
@@ -51,4 +56,5 @@ dependencies {
             }
         }
     }
+
 }
