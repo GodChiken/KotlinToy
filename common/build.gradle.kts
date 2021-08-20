@@ -38,6 +38,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
+    //test
+    testImplementation(kotlin("test"))
+    testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.0")
 
     //Entity <-> DTO Mapper
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
