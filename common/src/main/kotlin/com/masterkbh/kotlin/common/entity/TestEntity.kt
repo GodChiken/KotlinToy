@@ -6,7 +6,7 @@ import javax.persistence.*
 /*JPA Entity의 패키지 추후, Nexus를 통한 분리 필요*/
 @Entity
 @Table(name = "test_entity")
-class TestEntity (
+data class TestEntity (
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +21,5 @@ class TestEntity (
 
     @Column(name = "updated_at")
     var updatedAt: LocalDate? = LocalDate.now()
+
 )
