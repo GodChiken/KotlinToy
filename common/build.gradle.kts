@@ -44,7 +44,7 @@ dependencies {
 
     //Entity <-> DTO Mapper
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
-    annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.4.2.Final")
 
     api("com.querydsl:querydsl-jpa")
     kapt("com.querydsl:querydsl-apt:4.4.0:jpa")

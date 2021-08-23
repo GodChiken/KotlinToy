@@ -45,10 +45,10 @@ class TestService (
     }
 
     fun mappingTest(): Nothing? {
-        val testEntity = testRepository.findById(1)
         val converter = Mappers.getMapper(TestEntityMapper::class.java)
-        val testEntityDTO = null
-        //val testEntityDTO = converter.toDTO(testEntity)
-        return testEntityDTO
+        val testEntity = testRepository.findById(1).get()
+
+        val testEntityDTO = converter.toDTO(testEntity)
+        return null
     }
 }
