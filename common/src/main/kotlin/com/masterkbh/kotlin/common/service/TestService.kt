@@ -10,7 +10,7 @@ import java.time.LocalDate
 
 @Service
 class TestService (
-    private val testRepository: TestRepository
+    val testRepository: TestRepository
 ){
     fun testMethod(): String {
         return testRepository.count().toString();
@@ -20,6 +20,13 @@ class TestService (
         val testEntity = TestEntity()
         testEntity.insertedAt = LocalDate.now()
         testEntity.updatedAt = LocalDate.now().plusDays(1)
+        testRepository.save(testEntity);
+    }
+
+    fun addTestEntityByAPI() {
+        val testEntity = TestEntity()
+        testEntity.insertedAt = LocalDate.now()
+        testEntity.updatedAt = LocalDate.now().plusDays(6)
         testRepository.save(testEntity);
     }
 
