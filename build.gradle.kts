@@ -79,6 +79,22 @@ subprojects {
         plugin("io.spring.dependency-management")
         plugin( "kotlin-allopen")
     }
+    dependencies {
+        val kotestVersion = "4.1.2"
+        val mockkVersion = "1.10.0"
+        val mockServerVersion = "5.11.1"
+
+        //test
+        testImplementation("org.springframework.boot:spring-boot-starter-test") {
+            exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+        }
+        testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+        testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+        testImplementation("io.kotest:kotest-property-jvm:$kotestVersion")
+        testImplementation("io.kotest:kotest-extensions-spring:$kotestVersion")
+        testImplementation("io.mockk:mockk:$mockkVersion")
+        testImplementation("org.mock-server:mockserver-netty:$mockServerVersion")
+    }
 }
 
 /**
