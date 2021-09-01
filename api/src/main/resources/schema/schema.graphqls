@@ -1,0 +1,15 @@
+type Query {
+    shows(titleFilter: String): [Show]
+    testList(idFilter : ID): [Test]
+}
+
+type Show {
+    title: String
+    releaseYear: Int
+}
+
+type Test {
+    id : ID
+    insertedAt : String
+    updatedAt : String
+}
