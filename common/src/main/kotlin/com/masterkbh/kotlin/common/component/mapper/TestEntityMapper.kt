@@ -11,4 +11,7 @@ interface TestEntityMapper {
     fun toDTO(testEntity: TestEntity) : TestEntityDTO
     @InheritInverseConfiguration
     fun toEntity(testEntityDTO: TestEntityDTO) : TestEntity
+
+    fun toDTOList(testEntityList: List<TestEntity>) : List<TestEntityDTO>
+    fun toEntityList(testEntityDTOList: List<TestEntityDTO>) : List<TestEntity>
 }

@@ -1,6 +1,7 @@
 package com.masterkbh.kotlin.common.service
 
 import com.masterkbh.kotlin.common.component.mapper.TestEntityMapper
+import com.masterkbh.kotlin.common.dto.TestEntityDTO
 import com.masterkbh.kotlin.common.entity.TestEntity
 import com.masterkbh.kotlin.common.repository.TestRepository
 import org.mapstruct.factory.Mappers
@@ -57,5 +58,10 @@ class TestService (
 
         val testEntityDTO = converter.toDTO(testEntity)
         return null
+    }
+
+    fun findAll(): List<TestEntityDTO> {
+        return Mappers.getMapper(TestEntityMapper::class.java)
+            .toDTOList(testRepository.findAll())
     }
 }

@@ -26,7 +26,10 @@ buildscript {
         ext{ }
     */
     repositories {
+        //common maven
         mavenCentral()
+        //for kotlin dummy data generator
+        maven(url = "https://oss.sonatype.org/content/repositories/snapshots/")
     }
     dependencies {
         classpath( "org.jetbrains.kotlin:kotlin-noarg:1.5.0")
@@ -80,6 +83,7 @@ subprojects {
         plugin( "kotlin-allopen")
     }
     dependencies {
+        /*test*/
         val kotestVersion = "4.1.2"
         val mockkVersion = "1.10.0"
         val mockServerVersion = "5.11.1"
@@ -94,6 +98,9 @@ subprojects {
         testImplementation("io.kotest:kotest-extensions-spring:$kotestVersion")
         testImplementation("io.mockk:mockk:$mockkVersion")
         testImplementation("org.mock-server:mockserver-netty:$mockServerVersion")
+
+        //kotlin dummy data generator
+        implementation("io.github.serpro69:kotlin-faker:1.7.1")
     }
 }
 
