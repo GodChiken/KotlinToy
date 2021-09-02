@@ -14,21 +14,23 @@ class TestService (
     val testRepository: TestRepository
 ){
     fun testMethod(): String {
-        return testRepository.count().toString();
+        return testRepository.count().toString()
     }
 
-    fun addTestEntity() {
-        val testEntity = TestEntity()
-        testEntity.insertedAt = LocalDate.now()
-        testEntity.updatedAt = LocalDate.now().plusDays(1)
-        testRepository.save(testEntity);
+    fun addTestEntity(num: Int) {
+        for (i in 0..num) {
+            val testEntity = TestEntity()
+            testEntity.insertedAt = LocalDate.now()
+            testEntity.updatedAt = LocalDate.now().plusDays(1)
+            testRepository.save(testEntity)
+        }
     }
 
     fun addTestEntityByAPI() {
         val testEntity = TestEntity()
         testEntity.insertedAt = LocalDate.now()
         testEntity.updatedAt = LocalDate.now().plusDays(6)
-        testRepository.save(testEntity);
+        testRepository.save(testEntity)
     }
 
     fun transactionTest() {
@@ -44,7 +46,7 @@ class TestService (
         val testEntity = TestEntity()
         testEntity.insertedAt = LocalDate.now()
         testEntity.updatedAt = LocalDate.now().plusDays(2)
-        testRepository.save(testEntity);
+        testRepository.save(testEntity)
         throw RuntimeException()
     }
 

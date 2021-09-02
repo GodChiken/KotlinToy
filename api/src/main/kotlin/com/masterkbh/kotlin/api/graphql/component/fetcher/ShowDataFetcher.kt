@@ -1,4 +1,4 @@
-package com.masterkbh.kotlin.api.graphql.component
+package com.masterkbh.kotlin.api.graphql.component.fetcher
 
 import com.netflix.graphql.dgs.DgsComponent
 import com.netflix.graphql.dgs.DgsQuery
@@ -11,7 +11,8 @@ class ShowsDataFetcher {
         Show("Ozark", 2017),
         Show("The Crown", 2016),
         Show("Dead to Me", 2019),
-        Show("Orange is the New Black", 2013))
+        Show("Orange is the New Black", 2013)
+    )
 
     @DgsQuery
     fun shows(@InputArgument titleFilter : String?): List<Show> {
