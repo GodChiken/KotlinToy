@@ -1,5 +1,6 @@
 package com.masterkbh.kotlin.common.presentation.controller.api
 
+import com.masterkbh.kotlin.common.dto.TestEntityDTO
 import com.masterkbh.kotlin.common.entity.TestEntity
 import com.masterkbh.kotlin.common.service.TestService
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +16,7 @@ class TestRestController (
 
     @GetMapping("/add")
     fun insert(){
-        testService.addTestEntity()
+        testService.addTestEntity(100)
     }
 
     @GetMapping("/add/test/transaction")
@@ -29,12 +30,15 @@ class TestRestController (
     }
 
     @GetMapping("/call/query_dsl")
-    fun callQueryDSL(): String {
-        val testEntityList : List<TestEntity> =  testService.callQueryDSL()
-        return "1"
+    fun callQueryDSL() {
+        testService.callQueryDSL()
     }
     @GetMapping("/mapping")
     fun mappingTest(){
         testService.mappingTest()
+    }
+    @GetMapping("/find-all")
+    fun findAll(): List<TestEntityDTO> {
+        return testService.findAll()
     }
 }

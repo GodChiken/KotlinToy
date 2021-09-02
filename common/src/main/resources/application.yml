@@ -4,7 +4,7 @@ spring:
   jpa:
     show_sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
@@ -39,7 +39,7 @@ spring:
       minimum-idle: 5
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   config:
     activate:
       on-profile: dev
@@ -54,7 +54,6 @@ logging:
               BasicBinder: TRACE
 ---
 spring:
-  profiles: prod
   server:
     scheme: https
   datasource:
@@ -69,4 +68,7 @@ spring:
       minimum-idle: 20
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
+  config:
+    activate:
+      on-profile: prod

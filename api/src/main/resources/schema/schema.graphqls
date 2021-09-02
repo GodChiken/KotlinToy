@@ -1,6 +1,6 @@
 type Query {
     shows(titleFilter: String): [Show]
-    testList(idFilter : ID): [Test]
+    testList(idFilter : Long): [Test]
 }
 
 type Show {
@@ -9,7 +9,13 @@ type Show {
 }
 
 type Test {
-    id : ID
-    insertedAt : String
-    updatedAt : String
+    id : Long
+    insertedAt : Date
+    updatedAt : Date
 }
+
+scalar Date
+scalar DateTime
+scalar Long
+# scalar GraphQLBigDecimal
+# scalar GraphQLByte
