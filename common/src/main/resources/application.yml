@@ -4,7 +4,7 @@ spring:
   jpa:
     show_sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     properties:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
@@ -39,7 +39,7 @@ spring:
       minimum-idle: 5
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
   config:
     activate:
       on-profile: dev

@@ -2,12 +2,16 @@ package com.masterkbh.kotlin.common.service
 
 import com.masterkbh.kotlin.common.component.mapper.TestEntityMapper
 import com.masterkbh.kotlin.common.dto.TestEntityDTO
+import com.masterkbh.kotlin.common.dto.TestEntityRegistration
 import com.masterkbh.kotlin.common.entity.TestEntity
 import com.masterkbh.kotlin.common.repository.TestRepository
+import io.github.serpro69.kfaker.Faker
 import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.math.BigDecimal
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Service
 class TestService (
@@ -18,48 +22,23 @@ class TestService (
     }
 
     fun addTestEntity(num: Int) {
+        val faker = Faker()
+
         for (i in 0..num) {
-            val testEntity = TestEntity()
-            testEntity.insertedAt = LocalDate.now()
-            testEntity.updatedAt = LocalDate.now().plusDays(1)
+            val testEntity = TestEntityRegistration(
+                "결혼 했느냐",
+                "김보훈",
+                "코틀린마스터",
+                "시흥동",
+                BigDecimal.valueOf(faker.money.amount().toLong())
+            ).toEntity()
+
             testRepository.save(testEntity)
         }
     }
 
-    fun addTestEntityByAPI() {
-        val testEntity = TestEntity()
-        testEntity.insertedAt = LocalDate.now()
-        testEntity.updatedAt = LocalDate.now().plusDays(6)
-        testRepository.save(testEntity)
-    }
-
-    fun transactionTest() {
-        val testEntity = TestEntity()
-        testEntity.insertedAt = LocalDate.now()
-        testEntity.updatedAt = LocalDate.now().plusDays(2)
-        testRepository.save(testEntity)
-        throw RuntimeException()
-    }
-
-    @Transactional
-    fun transactionTest2() {
-        val testEntity = TestEntity()
-        testEntity.insertedAt = LocalDate.now()
-        testEntity.updatedAt = LocalDate.now().plusDays(2)
-        testRepository.save(testEntity)
-        throw RuntimeException()
-    }
-
     fun callQueryDSL(): List<TestEntity> {
-        return testRepository.findByIdAndUpdateAt(1, LocalDate.now())
-    }
-
-    fun mappingTest(): Nothing? {
-        val converter = Mappers.getMapper(TestEntityMapper::class.java)
-        val testEntity = testRepository.findById(1).get()
-
-        val testEntityDTO = converter.toDTO(testEntity)
-        return null
+        return testRepository.findByIdAndUpdateAt(1, LocalDateTime.now())
     }
 
     fun findAll(): List<TestEntityDTO> {
