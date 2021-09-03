@@ -13,5 +13,6 @@ class ScalarExtendRegistration {
         return builder.scalar(ExtendedScalars.Date)
                       .scalar(ExtendedScalars.DateTime)
                       .scalar(ExtendedScalars.GraphQLLong)
+                      .scalar(ExtendedScalars.GraphQLBigDecimal)
     }
 }

@@ -1,21 +1,26 @@
 type Query {
-    shows(titleFilter: String): [Show]
-    testList(idFilter : Long): [Test]
+    testList(
+        idFilter : Long
+    ): [Test]
 }
 
-type Show {
-    title: String
-    releaseYear: Int
-}
+# type Mutation{
+#    insertTestEntity() : [Test]
+#    updateTestEntity() : [Test]
+#}
 
 type Test {
     id : Long
     insertedAt : Date
     updatedAt : Date
+    secret : String
+    name : String
+    nickName : String
+    address : String,
+    money   : BigDecimal
 }
 
 scalar Date
 scalar DateTime
 scalar Long
-# scalar GraphQLBigDecimal
-# scalar GraphQLByte
+scalar BigDecimal

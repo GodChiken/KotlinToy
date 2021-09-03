@@ -9,10 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable
 class APITestController (
     val testService: TestService
 ){
-    @GetMapping("/another-module")
-    fun test(){
-        testService.addTestEntityByAPI()
-    }
     @GetMapping("/add/{num}")
     fun addDummy(@PathVariable num:Int){
         testService.addTestEntity(num)
