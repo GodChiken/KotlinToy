@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
 @EntityListeners(value = [AuditingEntityListener::class])
-abstract class TimeInfo : EntityId(){
+abstract class TimeInfo : EntityId() {
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

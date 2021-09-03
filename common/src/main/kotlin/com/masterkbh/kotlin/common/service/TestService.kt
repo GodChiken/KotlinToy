@@ -8,15 +8,13 @@ import com.masterkbh.kotlin.common.repository.TestRepository
 import io.github.serpro69.kfaker.Faker
 import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Service
-class TestService (
+class TestService(
     val testRepository: TestRepository
-){
+) {
     fun testMethod(): String {
         return testRepository.count().toString()
     }
