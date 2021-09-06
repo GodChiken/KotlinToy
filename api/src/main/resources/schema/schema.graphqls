@@ -1,6 +1,10 @@
 type Query {
     testList(
         idFilter : Long
+        secretContain : String
+        nameContain : String
+        nickNameContain : String
+        addressContain : String
     ): [Test]
 }
 
