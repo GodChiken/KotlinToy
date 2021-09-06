@@ -10,6 +10,13 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-joda")
 }
 
+/**
+ * 확장 스칼라 타입을 쓰는 경우 반드시 타입매핑을 그레이들 테스크에 추가해야한다.
+ * https://github.com/Netflix/dgs-framework/discussions/601
+ * Long Type 은 오류가 있어서 직접 매핑해줘야 원활하게 작동한다.
+ * 자동으로 처리되지 않는 이유는 Client에서 Long타입은 원활하게 작동하는 타입이 아니기 때문에
+ * netflix dgs에서 별도로 처리하지 않았기 때문이다.
+ */
 tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
     packageName = "com.masterkbh.kotlin.generated"
     typeMapping = mutableMapOf(
