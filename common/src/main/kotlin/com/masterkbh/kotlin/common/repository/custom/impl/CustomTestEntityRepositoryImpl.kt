@@ -7,9 +7,9 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import java.time.LocalDateTime
 
 class CustomTestEntityRepositoryImpl : QuerydslRepositorySupport(TestEntity::class.java), CustomTestEntityRepository {
-    override fun findByIdAndUpdateAt(id: Long, localDate: LocalDateTime): List<TestEntity> {
+    override fun findByIdAndUpdateAt(id: Long, updateAt: LocalDateTime): List<TestEntity> {
         return from(testEntity)
-            .where(testEntity.updatedAt.eq(localDate))
+            .where(testEntity.updatedAt.eq(updateAt))
             .where(testEntity.id.eq(id))
             .fetch()
     }

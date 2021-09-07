@@ -24,11 +24,11 @@ class TestService(
 
         for (i in 0..num) {
             val testEntity = TestEntityRegistration(
-                "결혼 했느냐",
+                faker.animal.name(),
                 "김보훈",
-                "코틀린마스터",
-                "시흥동",
-                BigDecimal.valueOf(faker.money.amount().toLong())
+                faker.funnyName.name(),
+                faker.address.fullAddress(),
+                BigDecimal.valueOf(3000000L)
             ).toEntity()
 
             testRepository.save(testEntity)
@@ -42,5 +42,11 @@ class TestService(
     fun findAll(): List<TestEntityDTO> {
         return Mappers.getMapper(TestEntityMapper::class.java)
             .toDTOList(testRepository.findAll())
+    }
+
+    fun addTestEntity(testEntityRegistration: TestEntityRegistration) : TestEntityDTO{
+        val testEntity = testEntityRegistration.toEntity()
+        testRepository.save(testEntity)
+        return Mappers.getMapper(TestEntityMapper::class.java).toDTO(testEntity)
     }
 }

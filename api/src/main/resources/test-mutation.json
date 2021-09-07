@@ -1,0 +1,31 @@
+mutation CreateReviewForEpisode($regist: TestEntityRegistration!) {
+  insertTestEntity(registration:$regist) {
+    secret
+    name
+    nickName
+    address
+    money
+  }
+}
+
+{
+  "regist":{
+    "secret" : "asdf",
+    "name" : "asdf",
+    "nickName" : "asdf",
+    "address" : "asdf",
+    "money" : 10000
+  }
+}
+
+{
+  "data": {
+    "insertTestEntity": {
+      "secret": "asdf",
+      "name": "asdf",
+      "nickName": "asdf",
+      "address": "asdf",
+      "money": 10000
+    }
+  }
+}
