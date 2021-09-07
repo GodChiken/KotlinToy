@@ -8,10 +8,16 @@ type Query {
     ): [Test]
 }
 
-# type Mutation{
-#    insertTestEntity() : [Test]
-#    updateTestEntity() : [Test]
-#}
+type Mutation{
+    insertTestEntity(registration : TestEntityRegistration) : Test
+}
+input TestEntityRegistration {
+    secret : String,
+    name : String,
+    nickName:String,
+    address:String,
+    money: BigDecimal
+}
 
 type Test {
     id : Long
