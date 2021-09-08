@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 /**
@@ -62,7 +63,11 @@ allprojects {
     //테스트시 사용할 요소 기술
     tasks.withType<Test> {
         useJUnitPlatform()
+        testLogging {
+            events = setOf(FAILED, PASSED, SKIPPED)
+        }
     }
+
 
 }
 
@@ -84,7 +89,7 @@ subprojects {
     }
     dependencies {
         /*test*/
-        val kotestVersion = "4.1.2"
+        val kotestVersion = "4.3.2"
         val mockkVersion = "1.10.0"
         val mockServerVersion = "5.11.1"
 
