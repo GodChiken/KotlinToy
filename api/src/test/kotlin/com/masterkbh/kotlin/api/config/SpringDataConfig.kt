@@ -9,9 +9,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @DataJpaTest
-@EntityScan(basePackages = ["com.masterkbh.kotlin.common"])
-@EnableJpaRepositories(basePackages = ["com.masterkbh.kotlin.common"])
+@EntityScan(basePackages = ["com.masterkbh.kotlin.common.entity"])
+@EnableJpaRepositories(basePackages = ["com.masterkbh.kotlin.common.repository"])
 class SpringDataConfig : AbstractProjectConfig() {
+
     override fun listeners() = listOf(SpringListener)
     override fun extensions(): List<Extension> = listOf(SpringAutowireConstructorExtension)
+
 }

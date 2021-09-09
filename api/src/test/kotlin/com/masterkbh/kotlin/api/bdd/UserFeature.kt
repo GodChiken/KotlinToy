@@ -1,23 +1,27 @@
 package com.masterkbh.kotlin.api.bdd
 
 import com.masterkbh.kotlin.api.config.SpringDataConfig
-import com.masterkbh.kotlin.common.repository.TestRepository
-import com.masterkbh.kotlin.common.service.TestService
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.WordSpec
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
-import io.mockk.mockk
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
-import java.util.*
 
 
+@EnableAutoConfiguration(exclude = [DataSourceAutoConfiguration::class])
 @ContextConfiguration(classes = [SpringDataConfig::class])
-class UserFeature : BehaviorSpec(){
+@ActiveProfiles(profiles = ["dev"])
+class UserFeature @Autowired constructor(
+    //testRepository : TestRepository
+) : BehaviorSpec() {
 
-    private val mockTestService = mockk<TestService>()
-    private val mockTestRepository = mockk<TestRepository>()
+/*
+    private val mockTestRepository = spyk(testRepository)
+    private val mockTestService = TestService(testRepository)
+*/
 
     //https://kotest.io/docs/framework/isolation-mode.html
     override fun isolationMode(): IsolationMode = IsolationMode.InstancePerLeaf
