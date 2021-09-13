@@ -5,16 +5,17 @@ import com.masterkbh.kotlin.common.repository.TestRepository
 import com.masterkbh.kotlin.common.service.TestService
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.BehaviorSpec
-import io.kotest.core.spec.style.WordSpec
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.mockk.mockk
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
-import java.util.*
 
 
 @ContextConfiguration(classes = [SpringDataConfig::class])
-class UserFeature : BehaviorSpec(){
+@ActiveProfiles(profiles = ["dev"])
+@ComponentScan(basePackages = ["com.masterkbh.kotlin.api", "com.masterkbh.kotlin.common"])
+class UserFeature : BehaviorSpec() {
 
     private val mockTestService = mockk<TestService>()
     private val mockTestRepository = mockk<TestRepository>()
