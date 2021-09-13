@@ -18,27 +18,11 @@ import javax.sql.DataSource
 
 
 @DataJpaTest
-<<<<<<< Updated upstream
-@EntityScan(basePackages = ["com.masterkbh.kotlin.common"])
-@EnableJpaRepositories(basePackages = ["com.masterkbh.kotlin.common"])
-=======
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @PropertySource("classpath:application.yml")
 @EntityScan(basePackages = ["com.masterkbh.kotlin.common.entity"])
 @EnableJpaRepositories(basePackages = ["com.masterkbh.kotlin.common.repository"])
->>>>>>> Stashed changes
 class SpringDataConfig : AbstractProjectConfig() {
     override fun listeners() = listOf(SpringListener)
     override fun extensions(): List<Extension> = listOf(SpringAutowireConstructorExtension)
-<<<<<<< Updated upstream
-=======
-
-    @Primary
-    @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.hikari")
-    fun hikariConfig(): HikariConfig? {
-        return HikariConfig()
-    }
-
->>>>>>> Stashed changes
 }
