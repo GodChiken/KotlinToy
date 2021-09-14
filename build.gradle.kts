@@ -37,9 +37,10 @@ buildscript {
     }
 }
 
-// 전체 프로젝트에 적용할 내용? 인거같은데 확인이 필요
-// 기존 depth-1 에 존재하는 task가 옮겨졌다.
-allprojects {
+// 각 서브 모듈에서? 의존성을 분리하기 위해 세팅하는듯 하다.
+// allproject, subproject 차이 학습
+// https://netframework.tistory.com/entry/gradle-%EC%A0%95%EB%A6%AC-multiple-project
+subprojects {
 
     group = "com.masterkbh.kotlin"
     version = "0.0.1-SNAPSHOT"
@@ -68,11 +69,6 @@ allprojects {
         }
     }
 
-
-}
-
-// 각 서브 모듈에서? 의존성을 분리하기 위해 세팅하는듯 하다.
-subprojects {
     repositories {
         mavenCentral()
     }
@@ -106,6 +102,9 @@ subprojects {
 
         //kotlin dummy data generator
         implementation("io.github.serpro69:kotlin-faker:1.7.1")
+
+        //for in memory db test
+        testRuntimeOnly("com.h2database:h2")
     }
 }
 
