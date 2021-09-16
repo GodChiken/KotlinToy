@@ -130,7 +130,8 @@ subprojects {
         implementation("io.github.serpro69:kotlin-faker:1.7.1")
 
         //for in memory db test
-        testRuntimeOnly("com.h2database:h2")
+
+        implementation("com.h2database:h2")
     }
 }
 

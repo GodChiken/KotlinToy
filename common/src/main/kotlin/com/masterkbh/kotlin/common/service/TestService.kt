@@ -19,7 +19,7 @@ class TestService(
         return testRepository.count().toString()
     }
 
-    fun addTestEntity(num: Int) {
+    fun addTestEntity(num: Int): Int {
         val faker = Faker()
 
         for (i in 0..num) {
@@ -33,6 +33,7 @@ class TestService(
 
             testRepository.save(testEntity)
         }
+        return testRepository.findAll().count()
     }
 
     fun callQueryDSL(): List<TestEntity> {
