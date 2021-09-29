@@ -10,15 +10,18 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.spyk
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.ContextConfiguration
 
 
 @ContextConfiguration(classes = [SpringDataConfig::class])
 //@ActiveProfiles(profiles = ["dev"])
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@ActiveProfiles(profiles = ["prod"])
 //@ActiveProfiles(profiles = ["test-in-memory-DB"])
-//@ActiveProfiles(profiles = ["test-DB"])
-//@ComponentScan(basePackages = ["com.masterkbh.*"])
+@ActiveProfiles(profiles = ["test-DB"])
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class UserFeature(
     testRepository: TestRepository
 ) : BehaviorSpec() {

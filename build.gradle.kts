@@ -38,7 +38,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * Entity 애노테이션이 붙은 코틀린 클래스의 NoArgument 생성자 자동 생성을 위한 설정
  */
 
-
 plugins {
     val kotlinVersion = "1.5.0"
     id("org.springframework.boot") version "2.5.3" apply false
@@ -49,12 +48,7 @@ plugins {
     kotlin("kapt") version kotlinVersion
 }
 
-
 buildscript {
-    /*
-        전역변수를 설정하는 곳이나 쓰지말자
-        ext{ }
-    */
     repositories {
         //common maven
         mavenCentral()
@@ -114,6 +108,7 @@ subprojects {
         val kotestVersion = "4.3.2"
         val mockkVersion = "1.10.0"
         val mockServerVersion = "5.11.1"
+        val junitJupiterVersion = "5.7.2"
 
         //test
         testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -130,8 +125,14 @@ subprojects {
         implementation("io.github.serpro69:kotlin-faker:1.7.1")
 
         //for in memory db test
-
         implementation("com.h2database:h2")
+
+        //test container
+        testImplementation("org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion")
+        testImplementation("org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion")
+        testImplementation("org.testcontainers:testcontainers:1.16.0")
+        testImplementation("org.testcontainers:junit-jupiter:1.16.0")
     }
 }
 
