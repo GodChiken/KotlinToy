@@ -17,11 +17,10 @@ import org.springframework.test.context.ContextConfiguration
 
 @ContextConfiguration(classes = [SpringDataConfig::class])
 //@ActiveProfiles(profiles = ["dev"])
-//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@ActiveProfiles(profiles = ["prod"])
 //@ActiveProfiles(profiles = ["test-in-memory-DB"])
-@ActiveProfiles(profiles = ["test-DB"])
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@ActiveProfiles(profiles = ["test-DB"])
 class UserFeature(
     testRepository: TestRepository
 ) : BehaviorSpec() {
@@ -53,3 +52,22 @@ class UserFeature(
         }
     }
 }
+
+name: default
+persistence provider classname: null
+classloader: sun.misc.Launcher$AppClassLoader@73d16e93
+excludeUnlistedClasses: true
+JTA datasource: null
+Non JTA datasource: org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@764125cc
+Transaction type: RESOURCE_LOCAL
+PU root URL: file:/Users/master/IdeaProjects/KotlinToy/common/build/libs/common-0.0.1-SNAPSHOT-plain.jar
+Shared Cache Mode: UNSPECIFIED
+Validation Mode: AUTO
+Jar files URLs []
+Managed classes names [
+com.masterkbh.kotlin.common.entity.TestEntity
+com.masterkbh.kotlin.common.entity.base.EntityId
+com.masterkbh.kotlin.common.entity.base.TimeInfo
+com.masterkbh.kotlin.common.entity.base.AuditingEntity]
+Mapping files names []
+Properties []

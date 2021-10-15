@@ -16,11 +16,10 @@ import org.testcontainers.junit.jupiter.Testcontainers
 
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@TestPropertySource(properties = ["com/masterkbh/kotlin/resources/application-test.yml"])
+@TestPropertySource(properties = ["classpath:application-test.yml"])
 @EntityScan(basePackages = ["com.masterkbh.kotlin.common.entity"])
 @EnableJpaRepositories(basePackages = ["com.masterkbh.kotlin.common.repository"])
-@Testcontainers
+//@Testcontainers
 class SpringDataConfig : AbstractProjectConfig() {
     override fun listeners() = listOf(SpringListener)
     override fun extensions(): List<Extension> = listOf(SpringAutowireConstructorExtension)
