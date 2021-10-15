@@ -53,6 +53,7 @@ class UserFeature(
     }
 }
 
+/*
 name: default
 persistence provider classname: null
 classloader: sun.misc.Launcher$AppClassLoader@73d16e93
@@ -70,4 +71,4 @@ com.masterkbh.kotlin.common.entity.base.EntityId
 com.masterkbh.kotlin.common.entity.base.TimeInfo
 com.masterkbh.kotlin.common.entity.base.AuditingEntity]
 Mapping files names []
-Properties []
+Properties []*/
