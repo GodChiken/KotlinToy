@@ -28,3 +28,13 @@ tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
         "Long" to "kotlin.Long"
     )
 }
+
+//https://handstandsam.com/2021/06/07/run-custom-gradle-task-after-build/
+//https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:finalizer_tasks
+tasks.register("rootClear",Delete::class){
+    delete(rootProject.buildDir)
+}
+
+tasks.named("build") {
+    finalizedBy("rootClear")
+}
